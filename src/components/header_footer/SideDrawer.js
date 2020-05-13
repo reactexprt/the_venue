@@ -25,18 +25,18 @@ const SideDrawer = (props) => {
             
             <List component="nav">
                 <ListItem button onClick={() => scrollToElement('featured')}>
-                    Events Starts in
+                    Party Starts in
                 </ListItem>
 
                 <ListItem button onClick={() => scrollToElement('venueInfo')}>
-                    Venue INFO
+                    Party INFO
                 </ListItem>
 
                 <ListItem button onClick={() => scrollToElement('highlights')}>
-                    Highlights
+                    About Her
                 </ListItem>
 
-                <ListItem button onClick={() => console.log("m")}>
+                <ListItem button onClick={() => scrollToElement('favourite')}>
                     Sneha Favourite's
                 </ListItem>
 

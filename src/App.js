@@ -27,7 +27,7 @@ class App extends Component {
           <Highlights />
         </Element>
 
-        <Element>
+        <Element name="favourite">
           <Pricing />
         </Element>
 
