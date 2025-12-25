@@ -35,7 +35,7 @@ const FavoriteThings = () => {
                 <Fade delay={600}>
                     <div className="hrithik_banner">
                         <span>🎬</span>
-                        <p>And yes, she's a huge <strong>Hrithik Roshan</strong> fan! (Don't worry, I'm not jealous... much 😄)</p>
+                        <p>And yes, she's a huge <strong>Aditya Roy Kapoor</strong> fan! (Don't worry, I'm not jealous... much 😄)</p>
                     </div>
                 </Fade>
             </div>

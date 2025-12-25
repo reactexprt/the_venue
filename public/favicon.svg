@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff4800"/>
+      <stop offset="100%" style="stop-color:#ffa800"/>
+    </linearGradient>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="48" fill="url(#bg)"/>
+  <!-- Cake base -->
+  <rect x="25" y="55" width="50" height="25" rx="5" fill="#fff"/>
+  <rect x="30" y="45" width="40" height="15" rx="3" fill="#ffe4e1"/>
+  <!-- Frosting -->
+  <path d="M25 55 Q30 50 35 55 Q40 50 45 55 Q50 50 55 55 Q60 50 65 55 Q70 50 75 55" stroke="#ff6b6b" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <!-- Candle -->
+  <rect x="47" y="28" width="6" height="18" rx="2" fill="#ffd93d"/>
+  <!-- Flame -->
+  <ellipse cx="50" cy="24" rx="5" ry="8" fill="#ff6b6b"/>
+  <ellipse cx="50" cy="22" rx="3" ry="5" fill="#ffd93d"/>
+  <ellipse cx="50" cy="20" rx="1.5" ry="3" fill="#fff"/>
+  <!-- Decorations -->
+  <circle cx="35" cy="65" r="3" fill="#ff4800"/>
+  <circle cx="50" cy="68" r="3" fill="#ffa800"/>
+  <circle cx="65" cy="65" r="3" fill="#ff4800"/>
+</svg>
