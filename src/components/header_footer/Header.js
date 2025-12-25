@@ -12,11 +12,15 @@ export default class Header extends Component {
     }
 
     componentDidMount() {
-        window.addEventListener('scroll', this.handleScroll);
+        window.addEventListener('scroll', this.handleScroll, { passive: true });
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
     }
 
     handleScroll = () => {
-        if (window.scrollY > 0){
+        if (window.scrollY > 50){
             this.setState({ headerShow: true })
         } else {
             this.setState({ headerShow: false })
@@ -34,9 +38,16 @@ export default class Header extends Component {
             <AppBar 
                 position="fixed"
                 style={{ 
-                    backgroundColor: this.state.headerShow ? '#2f2f2f' : 'transparent',
-                    boxShadow: 'none',
-                    padding: '10px 0px'
+                    backgroundColor: this.state.headerShow 
+                        ? 'rgba(26, 26, 46, 0.95)' 
+                        : 'transparent',
+                    backdropFilter: this.state.headerShow ? 'blur(10px)' : 'none',
+                    WebkitBackdropFilter: this.state.headerShow ? 'blur(10px)' : 'none',
+                    boxShadow: this.state.headerShow 
+                        ? '0 4px 30px rgba(0, 0, 0, 0.3)' 
+                        : 'none',
+                    padding: '10px 0px',
+                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
                  }}    
             >
                 <Toolbar>
@@ -46,9 +57,14 @@ export default class Header extends Component {
                     </div>
 
                     <IconButton
-                        aria-label="Menu"
+                        aria-label="Open menu"
                         color="inherit"
                         onClick={() => this.toggleDrawer(true)}
+                        style={{
+                            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                            borderRadius: '12px',
+                            padding: '10px'
+                        }}
                     >
                         <MenuIcon />
                     </IconButton>

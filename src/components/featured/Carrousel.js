@@ -1,69 +1,70 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Slider from "react-slick";
 import slide_one from '../../resources/images/slide_one.jpg';
-// import slide_two from '../../resources/images/slide_two.jpg';
-// import slide_three from '../../resources/images/slide_three.jpg';
 import slide_four from '../../resources/images/slide_four.jpg';
 
 const Carrousel = () => {
+    const [imagesLoaded, setImagesLoaded] = useState(false);
+
+    // Preload images for faster carousel display
+    useEffect(() => {
+        const imageUrls = [slide_one, slide_four];
+        let loadedCount = 0;
+        
+        imageUrls.forEach(url => {
+            const img = new Image();
+            img.src = url;
+            img.onload = () => {
+                loadedCount++;
+                if (loadedCount === imageUrls.length) {
+                    setImagesLoaded(true);
+                }
+            };
+        });
+    }, []);
 
     const settings = {
         dots: true,
         infinite: true,
         autoplay: true,
-        speed: 500
+        autoplaySpeed: 4000,
+        speed: 600,
+        fade: true,
+        cssEase: 'ease-out',
+        pauseOnHover: false,
+        arrows: false,
+        waitForAnimate: false
     }
+
+    const slides = [
+        { image: slide_one, alt: 'Celebration moment 1' },
+        { image: slide_four, alt: 'Celebration moment 2' }
+    ];
 
     return ( 
         <div 
             className="carrousel_wrapper"
             style={{ 
-                height: `${window.innerHeight}px`,
-                overflow: 'hidden'
+                opacity: imagesLoaded ? 1 : 0.8,
+                transition: 'opacity 0.3s ease'
             }}
         >
-
             <Slider {...settings}>
-                <div>
-                    <div
-                        className="carrousel_image"
-                        style={{
-                            background: `url(${slide_one})`,
-                            height:`${window.innerHeight}px`
-                        }}
-                    ></div>
-                </div>
-                {/* <div>
-                    <div
-                        className="carrousel_image"
-                        style={{
-                            background: `url(${slide_two})`,
-                            height:`${window.innerHeight}px`
-                        }}
-                    ></div>
-                </div>
-                <div>
-                    <div
-                        className="carrousel_image"
-                        style={{
-                            background: `url(${slide_three})`,
-                            height:`${window.innerHeight}px`
-                        }}
-                    ></div>
-                </div> */}
-                <div>
-                    <div
-                        className="carrousel_image"
-                        style={{
-                            background: `url(${slide_four})`,
-                            height:`${window.innerHeight}px`
-                        }}
-                    ></div>
-                </div>
+                {slides.map((slide, index) => (
+                    <div key={index}>
+                        <div
+                            className="carrousel_image"
+                            style={{
+                                backgroundImage: `url(${slide.image})`
+                            }}
+                            role="img"
+                            aria-label={slide.alt}
+                        />
+                    </div>
+                ))}
             </Slider>
-
         </div>
-     );
+    );
 }
  
 export default Carrousel;

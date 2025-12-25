@@ -59,7 +59,7 @@
     "sass-loader": "8.0.2",
     "semver": "6.3.0",
     "style-loader": "0.23.1",
-    "surge": "^0.21.3",
+    "surge": "^0.24.6",
     "terser-webpack-plugin": "2.3.5",
     "ts-pnp": "1.1.6",
     "url-loader": "2.3.0",
@@ -69,8 +69,8 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "start": "NODE_OPTIONS=--openssl-legacy-provider node scripts/start.js",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider node scripts/build.js",
     "test": "node scripts/test.js",
     "deploy": "npm run build && mv build/index.html build/200.html && surge build"
   },

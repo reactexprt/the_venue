@@ -5,6 +5,24 @@ import icon_calendar from '../../resources/images/icons/calendar.png';
 import icon_location from '../../resources/images/icons/location.png';
 
 const VenueInfo = () => {
+    // Calculate the next birthday date dynamically
+    const getNextBirthdayDate = () => {
+        const now = new Date();
+        const currentYear = now.getFullYear();
+        const birthMonth = 8; // September (0-indexed)
+        const birthDay = 16;
+        
+        let nextBirthday = new Date(currentYear, birthMonth, birthDay);
+        
+        // If this year's birthday has passed, set to next year
+        if (now > nextBirthday) {
+            nextBirthday = new Date(currentYear + 1, birthMonth, birthDay);
+        }
+        
+        const options = { day: 'numeric', month: 'long', year: 'numeric' };
+        return nextBirthday.toLocaleDateString('en-US', options);
+    };
+
     return (
         <div className="bck_black">
             <div className="center_wrapper">
@@ -24,10 +42,10 @@ const VenueInfo = () => {
                                     </div>
                                     <div className="vn_title">
                                         Party Date & Time
-                                </div>
+                                    </div>
                                     <div className="vn_desc">
-                                        16 September 2020 @07:00 pm
-                                </div>
+                                        {getNextBirthdayDate()} @07:00 pm
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -47,10 +65,10 @@ const VenueInfo = () => {
                                     </div>
                                     <div className="vn_title">
                                         Party Location
-                                </div>
+                                    </div>
                                     <div className="vn_desc">
                                         B-1205, Windsor Cabana
-                                </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
